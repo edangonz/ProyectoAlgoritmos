@@ -181,6 +181,10 @@ public class Vertex {
     public void setCamino(List<Vertex> camino) {
         this.camino = camino;
     }
+    
+    public boolean isObstaculo(){
+        return this.data.isIsObstaculo();
+    }
 
     @Override
     public String toString() {

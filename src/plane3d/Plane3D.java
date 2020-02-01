@@ -97,8 +97,6 @@ public class Plane3D extends JPanel implements Runnable{
         generarObstaculos(100);
         
         generarGrafo();
-        System.out.println(grafo.BFS(matriz,  new Point(0,20,30), new Point(matriz.length-1, 20, 30)));
-        System.out.println(matriz[matriz.length-1][20][30].getCamino());
         
         Thread simulacionColores = new Thread(new Simulacion(matriz, profundidad, base, altura, grafo));
         simulacionColores.start();
@@ -167,11 +165,17 @@ public class Plane3D extends JPanel implements Runnable{
     
     private void generarObstaculos(int numeroObstaculos){
         for(int i = 0; i < numeroObstaculos; i++){
-            int numero1 = r.nextInt(base - 6) + 3;
-            int numero2 = r.nextInt(profundidad - 6) + 3;
-            int numero3 = r.nextInt(altura - 6) + 3;
-
-            crearObstaculo(numero2, numero1, numero3);
+            int numero1;
+            int numero2;
+            int numero3;
+            
+            do{
+                numero1 = r.nextInt(base - 6) + 3;
+                numero2 = r.nextInt(profundidad - 6) + 3;
+                numero3 = r.nextInt(altura - 6) + 3;
+            
+                crearObstaculo(numero2, numero1, numero3);
+            } while(!this.matriz[numero2][numero1][numero3].isObstaculo());
         }
     }
     
