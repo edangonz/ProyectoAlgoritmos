@@ -14,9 +14,9 @@ import java.awt.Polygon;
  * @author ADMIN
  */
 public class Nodo extends Shape{
-    boolean isObstaculo = false;
-    boolean isCamino = false;
-    
+    boolean isObstaculo;
+    boolean isCamino;
+        
     private final int posicionx;
     private final int poscionyy;
     private final int posicionz;
@@ -24,13 +24,6 @@ public class Nodo extends Shape{
     private Color color1;
     private Color color2;
     private Color color3;
-    
-    private Nodo nodoSuperior;
-    private Nodo nodoInferior;
-    private Nodo nodoDelantero;
-    private Nodo nodoTrasero;
-    private Nodo nodoIzquierda;
-    private Nodo nodoDerecha;
     
     public Nodo(int x, int y, int z, int arista) {
         super(x, y, z, arista);
@@ -61,15 +54,9 @@ public class Nodo extends Shape{
         this.color1 = Color.gray;
         this.color2 = Color.white;
         this.color3 = Color.green;
-    }
-    
-    public void establecerCaminos(Nodo nodoSuperior, Nodo nodoInferior, Nodo nodoDelantero, Nodo nodoTrasero, Nodo nodoIzquierda,Nodo nodoDerecha){
-        this.nodoSuperior = nodoSuperior;
-        this.nodoInferior = nodoInferior;
-        this.nodoDelantero = nodoDelantero;
-        this.nodoTrasero = nodoTrasero;
-        this.nodoIzquierda = nodoIzquierda;
-        this.nodoDerecha = nodoDerecha;
+        
+        this.isObstaculo = false;
+        this.isCamino = false;
     }
 
     @Override
@@ -115,7 +102,15 @@ public class Nodo extends Shape{
         this.color2 = Color.cyan;
         this.color3 = Color.DARK_GRAY;
     }
-
+    
+    public void setDesmarcarCamino(){
+        isCamino = false;
+        
+        this.color1 = Color.BLUE;
+        this.color2 = Color.cyan;
+        this.color3 = Color.DARK_GRAY;
+    }
+    
     public int getPosicionx() {
         return posicionx;
     }
@@ -128,63 +123,11 @@ public class Nodo extends Shape{
         return posicionz;
     }
 
-    public Nodo getNodoSuperior() {
-        return nodoSuperior;
-    }
-
-    public void setNodoSuperior(Nodo nodoSuperior) {
-        this.nodoSuperior = nodoSuperior;
-    }
-
-    public Nodo getNodoInferior() {
-        return nodoInferior;
-    }
-
-    public void setNodoInferior(Nodo nodoInferior) {
-        this.nodoInferior = nodoInferior;
-    }
-
-    public Nodo getNodoDelantero() {
-        return nodoDelantero;
-    }
-
-    public void setNodoDelantero(Nodo nodoDelantero) {
-        this.nodoDelantero = nodoDelantero;
-    }
-
-    public Nodo getNodoIzquierda() {
-        return nodoIzquierda;
-    }
-
-    public void setNodoIzquierda(Nodo nodoIzquierda) {
-        this.nodoIzquierda = nodoIzquierda;
-    }
-
-    public Nodo getNodoDerecha() {
-        return nodoDerecha;
-    }
-
-    public void setNodoDerecha(Nodo nodoDerecha) {
-        this.nodoDerecha = nodoDerecha;
-    }
-
-    public Nodo getNodoTrasero() {
-        return nodoTrasero;
-    }
-
-    public void setNodoTrasero(Nodo nodoTrasero) {
-        this.nodoTrasero = nodoTrasero;
-    }
-
     public boolean isIsObstaculo() {
         return isObstaculo;
     }
 
     public boolean isIsCamino() {
         return isCamino;
-    }
-
-    public void setIsCamino(boolean isCamino) {
-        this.isCamino = isCamino;
     }
 }

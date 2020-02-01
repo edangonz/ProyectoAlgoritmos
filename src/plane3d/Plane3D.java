@@ -130,34 +130,34 @@ public class Plane3D extends JPanel implements Runnable{
     private void nodoAnadirCamino(int profundidad, int base, int altura, Vertex tempNode){
         if(altura < this.altura - 1){
             Vertex tempNodoLlegada = matriz[profundidad][base][altura + 1];
-            tempNode.getData().setNodoSuperior(tempNodoLlegada.getData());
+            tempNode.setVertexSuperior(tempNodoLlegada);
             grafo.addEdge(tempNode, tempNodoLlegada, 1);
         }
         if(altura > 0){
             Vertex tempNodoLlegada = matriz[profundidad][base][altura - 1];
-            tempNode.getData().setNodoInferior(tempNodoLlegada.getData());
+            tempNode.setVertexInferior(tempNodoLlegada);
             grafo.addEdge(tempNode, tempNodoLlegada, 1);
         }
         
         if(profundidad < this.profundidad - 1){
             Vertex tempNodoLlegada = matriz[profundidad + 1][base][altura];
-            tempNode.getData().setNodoDelantero(tempNodoLlegada.getData());
+            tempNode.setVertexDelantero(tempNodoLlegada);
             grafo.addEdge(tempNode, tempNodoLlegada, 1);
         }
         if(profundidad > 0){
             Vertex tempNodoLlegada = matriz[profundidad - 1][base][altura];
-            tempNode.getData().setNodoTrasero(tempNodoLlegada.getData());
+            tempNode.setVertexTrasero(tempNodoLlegada);
             grafo.addEdge(tempNode, tempNodoLlegada, 1);
         }
         
         if(base < this.base - 1){
             Vertex tempNodoLlegada = matriz[profundidad][base + 1][altura];
-            tempNode.getData().setNodoDerecha(tempNodoLlegada.getData());
+            tempNode.setVertexDerecha(tempNodoLlegada);
             grafo.addEdge(tempNode, tempNodoLlegada, 1);
         }
         if(base > 0){
             Vertex tempNodoLlegada = matriz[profundidad][base - 1][altura];
-            tempNode.getData().setNodoIzquierda(tempNodoLlegada.getData());
+            tempNode.setVertexIzquierda(tempNodoLlegada);
             grafo.addEdge(tempNode, tempNodoLlegada, 1);
         }
     }
@@ -176,7 +176,7 @@ public class Plane3D extends JPanel implements Runnable{
         for(int i = profundidad - 3; i < profundidad + 3; i++){
             for(int j = base - 3; j < base + 3 ; j++){
                 for(int k = altura - 3; k < altura + 3; k++)
-                    this.matriz[i][j][k].getData().setObstaculo();
+                    this.matriz[i][j][k].setObstaculo();
             }
         }
         

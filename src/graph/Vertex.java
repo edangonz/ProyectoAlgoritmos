@@ -5,6 +5,7 @@
  */
 package graph;
 
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 import shape.Nodo;
@@ -17,15 +18,22 @@ public class Vertex {
     private Nodo data;
     private List<Edge> edges;
     private boolean vistado;
-    private long peso;
-    private Vertex antecesor;
+    private int peso;
+    
+    private Vertex vertexantecesor;
+    private Vertex vertexSuperior;
+    private Vertex vertexInferior;
+    private Vertex vertexDelantero;
+    private Vertex vertexTrasero;
+    private Vertex vertexIzquierda;
+    private Vertex vertexDerecha;
 
     public Vertex() {
         this.edges = new ArrayList();
         this.vistado = false;
     }
     
-    public Nodo getData() {
+    public Nodo getData2() {
         return data;
     }
 
@@ -41,21 +49,79 @@ public class Vertex {
         return vistado;
     }
 
-    public long getDistancia() {
+    public int getDistancia() {
         return peso;
     }
 
-    public void setDistancia(long distancia) {
+    public void setDistancia(int distancia) {
         this.peso = distancia;
     }
 
     public Vertex getAntecesor() {
-        return antecesor;
+        return vertexantecesor;
     }
 
     public void setAntecesor(Vertex antecesor) {
-        this.antecesor = antecesor;
+        this.vertexantecesor = antecesor;
     }
+
+    public Vertex getVertexantecesor() {
+        return vertexantecesor;
+    }
+
+    public void setVertexantecesor(Vertex vertexantecesor) {
+        this.vertexantecesor = vertexantecesor;
+    }
+
+    public Vertex getVertexSuperior() {
+        return vertexSuperior;
+    }
+
+    public void setVertexSuperior(Vertex vertexSuperior) {
+        this.vertexSuperior = vertexSuperior;
+    }
+
+    public Vertex getVertexInferior() {
+        return vertexInferior;
+    }
+
+    public void setVertexInferior(Vertex vertexInferior) {
+        this.vertexInferior = vertexInferior;
+    }
+
+    public Vertex getVertexDelantero() {
+        return vertexDelantero;
+    }
+
+    public void setVertexDelantero(Vertex vertexDelantero) {
+        this.vertexDelantero = vertexDelantero;
+    }
+
+    public Vertex getVertexTrasero() {
+        return vertexTrasero;
+    }
+
+    public void setVertexTrasero(Vertex vertexTrasero) {
+        this.vertexTrasero = vertexTrasero;
+    }
+
+    public Vertex getVertexIzquierda() {
+        return vertexIzquierda;
+    }
+
+    public void setVertexIzquierda(Vertex vertexIzquierda) {
+        this.vertexIzquierda = vertexIzquierda;
+    }
+
+    public Vertex getVertexDerecha() {
+        return vertexDerecha;
+    }
+
+    public void setVertexDerecha(Vertex vertexDerecha) {
+        this.vertexDerecha = vertexDerecha;
+    }
+    
+    
     
     public int cantidadEdge(){
         return this.edges.size();
@@ -63,5 +129,24 @@ public class Vertex {
 
     public void setData(Nodo data) {
         this.data = data;
+    }
+    
+    public void setCamino(boolean isCamino){
+        if(isCamino)
+            this.data.setCamino();
+        else
+            this.data.setDesmarcarCamino();
+    }
+    
+    public boolean isIsCamino(){
+        return this.data.isIsCamino();
+    }
+    
+    public void render(Graphics2D g){
+        this.data.render(g);
+    }
+    
+    public void setObstaculo(){
+        this.data.setObstaculo();
     }
 }

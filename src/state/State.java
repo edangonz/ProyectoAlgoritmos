@@ -83,7 +83,7 @@ public class State {
         for(int i = 0; i < this.x; i++){
                 for(int j = 0; j < this.y; j++){
                     for(int k = 0; k < this.z; k++){
-                        matriz[i][j][k].getData().render(g);
+                        matriz[i][j][k].render(g);
                     }
                 }
             }
