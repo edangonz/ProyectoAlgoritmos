@@ -7,11 +7,8 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Queue;
-import shape.Nodo;
 
 /**
  *
@@ -69,62 +66,10 @@ public class GraphLA {
     
     public boolean removeEdge(Vertex origen, Vertex destino){
         if(origen!=null && destino!=null){
-                Edge e1 = new Edge(1, origen, destino);
-                origen.getEdges().remove(e1);
-                return true;
+            Edge e1 = new Edge(1, origen, destino);
+            origen.getEdges().remove(e1);
+            return true;
         }
         return false;
     }
-    public int BFS(Vertex mat[][][], Point src,Point dest) 
-{ 
-    // check source and destination cell 
-    // of the matrix have value 1 
-    if (mat[dest.getX()][dest.getY()][dest.getZ()].getData2().isIsObstaculo() || mat[src.getX()][src.getY()][src.getZ()].getData2().isIsObstaculo() ) 
-        return -1; 
-  
-    Vertex vex = mat[src.getX()][src.getY()][src.getZ()];
-      
-    // Mark the source cell as visited 
-    vex.setVisited(true);
-    vex.setPrueba(0);
-  
-    // Create a queue for BFS 
-    Queue<Vertex> q = new LinkedList<>(); 
-      
-    // Distance of source cell is 0 
-    
-    q.add(vex); // Enqueue source cell 
-  
-    // Do a BFS starting from source cell 
-    while (!q.isEmpty()) 
-    { 
-        Vertex curr = q.peek(); 
-         
-  
-        // If we have reached the destination cell, 
-        // we are done 
-        if (curr.equals(mat[dest.getX()][dest.getY()][dest.getZ()])) 
-            return curr.getPrueba(); // CAMBIAR ESTO A UNA LISTA 
-  
-        // Otherwise dequeue the front cell  
-        // in the queue and enqueue 
-        // its adjacent cells 
-        q.remove(); 
-        
-        for(Edge e: curr.getEdges()){
-            if (!e.getDestino().getData2().isIsObstaculo() && !e.getDestino().isVisited()) {
-                e.getDestino().setVisited(true);
-                e.getDestino().setPrueba(e.getOrigen().getPrueba()+1);
-                e.getDestino().getCamino().addAll(e.getOrigen().getCamino());
-                e.getDestino().getCamino().add(e.getOrigen());
-                q.add(e.getDestino());
-            }
-        }
-  
-        
-    } 
-  
-    // Return -1 if destination cannot be reached 
-    return -1; 
-} 
 }

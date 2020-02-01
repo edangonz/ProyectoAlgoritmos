@@ -233,10 +233,9 @@ public class Plane3D extends JPanel implements Runnable{
             
             int thisSecond = (int) (lastUpdateTime/1000000000);
             if(thisSecond > lastSecondTime){
-                if(frameCount != oldFrameCount){
-                    System.out.println("hola segundo "+thisSecond + frameCount);
+                if(frameCount != oldFrameCount)
                     oldFrameCount = frameCount;
-                }
+                
                 frameCount = 0;
                 lastSecondTime = thisSecond;
             }
