@@ -43,7 +43,7 @@ public class Simulacion implements Runnable{
         //while(true){
             
             Vertex vertexOrigen = matriz[0][0][0];
-            vertexOrigen.getData().setCamino();
+            vertexOrigen.setCamino(true);
             
             int x;
             
@@ -55,8 +55,8 @@ public class Simulacion implements Runnable{
                     
                     Vertex vertexDestino = vertexOrigen.getEdges().get(x).getDestino();
                     
-                    if(!vertexDestino.getData().isIsCamino()){
-                        vertexDestino.getData().setCamino();
+                    if(!vertexDestino.isIsCamino()){
+                        vertexDestino.setCamino(true);
                         vertexOrigen = vertexDestino;
                     }
                     
