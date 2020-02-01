@@ -98,6 +98,7 @@ public class Plane3D extends JPanel implements Runnable{
         
         generarGrafo();
         System.out.println(grafo.BFS(matriz,  new Point(0,20,30), new Point(matriz.length-1, 20, 30)));
+        System.out.println(matriz[matriz.length-1][20][30].getCamino());
         
         Thread simulacionColores = new Thread(new Simulacion(matriz, profundidad, base, altura, grafo));
         simulacionColores.start();

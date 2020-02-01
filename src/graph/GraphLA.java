@@ -115,6 +115,8 @@ public class GraphLA {
             if (!e.getDestino().getData2().isIsObstaculo() && !e.getDestino().isVisited()) {
                 e.getDestino().setVisited(true);
                 e.getDestino().setPrueba(e.getOrigen().getPrueba()+1);
+                e.getDestino().getCamino().addAll(e.getOrigen().getCamino());
+                e.getDestino().getCamino().add(e.getOrigen());
                 q.add(e.getDestino());
             }
         }

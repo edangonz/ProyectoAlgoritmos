@@ -173,6 +173,20 @@ public class Vertex {
     public void setPrueba(int prueba) {
         this.prueba = prueba;
     }
+
+    public List<Vertex> getCamino() {
+        return camino;
+    }
+
+    public void setCamino(List<Vertex> camino) {
+        this.camino = camino;
+    }
+
+    @Override
+    public String toString() {
+        return "Vertex{" + "prueba=" + prueba + '}';
+    }
+    
     
     
 }
