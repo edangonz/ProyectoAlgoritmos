@@ -43,7 +43,9 @@ public class Simulacion implements Runnable{
         //while(true){
             
             Vertex vertexOrigen = matriz[0][0][0];
+            
             vertexOrigen.setCamino(true);
+            
             
             int x;
             

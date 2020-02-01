@@ -6,6 +6,7 @@
 package plane3d;
 
 import graph.GraphLA;
+import graph.Point;
 import graph.Vertex;
 import shape.Nodo;
 import java.awt.Color;
@@ -96,6 +97,7 @@ public class Plane3D extends JPanel implements Runnable{
         generarObstaculos(100);
         
         generarGrafo();
+        System.out.println(grafo.BFS(matriz,  new Point(0,20,30), new Point(matriz.length-1, 20, 30)));
         
         Thread simulacionColores = new Thread(new Simulacion(matriz, profundidad, base, altura, grafo));
         simulacionColores.start();

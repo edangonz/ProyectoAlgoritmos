@@ -7,7 +7,9 @@ package graph;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import shape.Nodo;
 
 /**
@@ -19,6 +21,10 @@ public class Vertex {
     private List<Edge> edges;
     private boolean vistado;
     private int peso;
+    private boolean visited=false;
+    private List<Vertex> camino;
+    private int prueba;
+    
     
     private Vertex vertexantecesor;
     private Vertex vertexSuperior;
@@ -31,7 +37,9 @@ public class Vertex {
     public Vertex() {
         this.edges = new ArrayList();
         this.vistado = false;
+        this.camino=new LinkedList<>();
     }
+    
     
     public Nodo getData2() {
         return data;
@@ -149,4 +157,22 @@ public class Vertex {
     public void setObstaculo(){
         this.data.setObstaculo();
     }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public int getPrueba() {
+        return prueba;
+    }
+
+    public void setPrueba(int prueba) {
+        this.prueba = prueba;
+    }
+    
+    
 }
