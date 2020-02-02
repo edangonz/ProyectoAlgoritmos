@@ -49,28 +49,29 @@ public class Simulacion implements Runnable{
         Vertex tempVertex = bfs(matriz, inicio, fin);
         
         if(tempVertex != null){
-            System.out.println("\nEl costo de esta ruta es: " + tempVertex.getCamino().size());
-            Iterator<Vertex> it = tempVertex.getCamino().iterator();
+            Vertex temp = this.matriz[fin.getX()][fin.getY()][fin.getZ()];
 
-            Vertex temp;
-
-            while(it.hasNext()){
-                temp = it.next();
+            int x = 0;
+            
+            while(temp.getAntecesor() != null){
                 temp.setCamino(true);
+                temp = temp.getAntecesor();
+                x++;
             }
+            
+            System.out.println("\nEl costo de esta ruta es: " + x);
         } else {
             System.out.println("\nEl camino no existe.");
         }
     }
     
     private Vertex bfs(Vertex mat[][][], Point src,Point dest) {
-        if (mat[dest.getX()][dest.getY()][dest.getZ()].getData2().isIsObstaculo() || mat[src.getX()][src.getY()][src.getZ()].getData2().isIsObstaculo() ) 
+        if (mat[dest.getX()][dest.getY()][dest.getZ()].isObstaculo() || mat[src.getX()][src.getY()][src.getZ()].isObstaculo() ) 
             return null; 
 
         Vertex vex = mat[src.getX()][src.getY()][src.getZ()];
 
         vex.setVisited(true);
-        vex.setPrueba(0);
 
         Queue<Vertex> q = new LinkedList<>();
 
@@ -78,16 +79,15 @@ public class Simulacion implements Runnable{
         
         while (!q.isEmpty()){ 
             Vertex curr = q.peek();
+            
             if (curr.equals(mat[dest.getX()][dest.getY()][dest.getZ()])) 
                 return curr;
             q.remove(); 
 
             for(Edge e: curr.getEdges()){
-                if (!e.getDestino().getData2().isIsObstaculo() && !e.getDestino().isVisited()) {
+                if (!e.getDestino().isObstaculo() && !e.getDestino().isVisited()) {
                     e.getDestino().setVisited(true);
-                    e.getDestino().setPrueba(e.getOrigen().getPrueba()+1);
-                    e.getDestino().getCamino().addAll(e.getOrigen().getCamino());
-                    e.getDestino().getCamino().add(e.getOrigen());
+                    e.getDestino().setAntecesor(e.getOrigen());
                     q.add(e.getDestino());
                 }
             }

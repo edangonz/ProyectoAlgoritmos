@@ -19,7 +19,7 @@ public class Window extends JFrame{
         //setContentPane(new GamePanel(Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height));
         setIgnoreRepaint(true);
         //setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        setUndecorated(true);
+        //setUndecorated(true);
         setContentPane(new Plane3D(1000, 800));
         pack();
         setLocationRelativeTo(null);

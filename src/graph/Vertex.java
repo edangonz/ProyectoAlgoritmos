@@ -7,9 +7,7 @@ package graph;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import shape.Nodo;
 
 /**
@@ -19,11 +17,8 @@ import shape.Nodo;
 public class Vertex {
     private Nodo data;
     private List<Edge> edges;
-    private boolean vistado;
     private int peso;
-    private boolean visited=false;
-    private List<Vertex> camino;
-    private int prueba;
+    private boolean visited;
     
     
     private Vertex vertexantecesor;
@@ -36,25 +31,11 @@ public class Vertex {
 
     public Vertex() {
         this.edges = new ArrayList();
-        this.vistado = false;
-        this.camino=new LinkedList<>();
-    }
-    
-    
-    public Nodo getData2() {
-        return data;
+        this.visited = false;
     }
 
     public List<Edge> getEdges() {
         return edges;
-    }
-    
-    public void visited(boolean vistado){
-        this.vistado = vistado;
-    }
-
-    public boolean isVistado() {
-        return vistado;
     }
 
     public int getDistancia() {
@@ -71,14 +52,6 @@ public class Vertex {
 
     public void setAntecesor(Vertex antecesor) {
         this.vertexantecesor = antecesor;
-    }
-
-    public Vertex getVertexantecesor() {
-        return vertexantecesor;
-    }
-
-    public void setVertexantecesor(Vertex vertexantecesor) {
-        this.vertexantecesor = vertexantecesor;
     }
 
     public Vertex getVertexSuperior() {
@@ -165,32 +138,8 @@ public class Vertex {
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
-
-    public int getPrueba() {
-        return prueba;
-    }
-
-    public void setPrueba(int prueba) {
-        this.prueba = prueba;
-    }
-
-    public List<Vertex> getCamino() {
-        return camino;
-    }
-
-    public void setCamino(List<Vertex> camino) {
-        this.camino = camino;
-    }
     
     public boolean isObstaculo(){
         return this.data.isIsObstaculo();
     }
-
-    @Override
-    public String toString() {
-        return "Vertex{" + "prueba=" + prueba + '}';
-    }
-    
-    
-    
 }
