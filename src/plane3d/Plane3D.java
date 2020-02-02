@@ -6,7 +6,6 @@
 package plane3d;
 
 import graph.GraphLA;
-import graph.Point;
 import graph.Vertex;
 import shape.Nodo;
 import java.awt.Color;
@@ -53,6 +52,8 @@ public class Plane3D extends JPanel implements Runnable{
     
     private GraphLA grafo;
     
+    private int mindData;
+    
     public Plane3D(int width, int height){
         this.width = width;
         this.height = height;
@@ -62,9 +63,11 @@ public class Plane3D extends JPanel implements Runnable{
         
         grafo = new GraphLA();
         
-        this.profundidad = 100;
-        this.base = 100;
-        this.altura = 100;
+        mindData = 100;
+        
+        this.profundidad = mindData;
+        this.base = mindData;
+        this.altura = mindData;
         
         matriz = new Vertex[profundidad][base][altura];
     }
@@ -98,7 +101,7 @@ public class Plane3D extends JPanel implements Runnable{
         
         generarGrafo();
         
-        Thread simulacionColores = new Thread(new Simulacion(matriz, profundidad, base, altura, grafo));
+        Thread simulacionColores = new Thread(new Simulacion(matriz, profundidad, base, altura, grafo, mindData));
         simulacionColores.start();
         
         dibujador = new State(profundidad, base, altura, arista ,aristaCubos, matriz);
