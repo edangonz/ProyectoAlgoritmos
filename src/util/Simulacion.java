@@ -46,10 +46,9 @@ public class Simulacion implements Runnable{
                 
         System.out.println("Buscando ruta desde coordenada: " + inicio.getX() + "." +  inicio.getY() + "." +  inicio.getZ() + "\nHasta coodenadas: " +
                 fin.getX() + "." +  fin.getY() + "." +  fin.getZ());
-        Vertex tempVertex = bfs(matriz, inicio, fin);
+        Vertex temp = bfs(matriz, inicio, fin);
         
-        if(tempVertex != null){
-            Vertex temp = this.matriz[fin.getX()][fin.getY()][fin.getZ()];
+        if(temp != null){
 
             int x = 0;
             
